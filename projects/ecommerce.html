@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce Platform | David Povi</title>
+    <meta name="description" content="Proyecto de plataforma de comercio electrónico desarrollado por David Povi">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../styles.css">
+    
+    <style>
+        .project-hero {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            padding: 140px 0 80px;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(16, 185, 129, 0.05));
+        }
+        
+        .project-hero-content {
+            max-width: 800px;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            transition: color 0.3s;
+        }
+        
+        .back-link:hover {
+            color: var(--primary);
+        }
+        
+        .project-hero-title {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 16px;
+        }
+        
+        .project-hero-description {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            line-height: 1.7;
+        }
+        
+        .project-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+            margin-bottom: 32px;
+        }
+        
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        
+        .meta-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .meta-value {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 16px;
+        }
+        
+        .project-showcase {
+            padding: 80px 0;
+        }
+        
+        .showcase-image {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--text-muted);
+            margin-bottom: 60px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+        
+        .feature-card {
+            padding: 32px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            transition: all 0.3s;
+        }
+        
+        .feature-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--primary);
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: var(--radius-md);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+        }
+        
+        .feature-card p {
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+        
+        .tech-section {
+            padding: 60px 0;
+            background: var(--bg-secondary);
+        }
+        
+        .tech-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: center;
+        }
+        
+        .tech-badge {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            font-weight: 500;
+        }
+        
+        .tech-badge i {
+            font-size: 1.3rem;
+        }
+        
+        .challenges-section {
+            padding: 80px 0;
+        }
+        
+        .challenge-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+            padding: 32px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+        }
+        
+        .challenge-item:nth-child(even) {
+            direction: rtl;
+        }
+        
+        .challenge-item:nth-child(even) > * {
+            direction: ltr;
+        }
+        
+        .challenge-title {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            color: var(--primary);
+        }
+        
+        .challenge-problem h4,
+        .challenge-solution h4 {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+        
+        .challenge-problem p,
+        .challenge-solution p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        @media (max-width: 768px) {
+            .challenge-item {
+                grid-template-columns: 1fr;
+            }
+            
+            .challenge-item:nth-child(even) {
+                direction: ltr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-gradient" aria-hidden="true"></div>
+    <div class="bg-grid" aria-hidden="true"></div>
+    
+    <!-- Navigation -->
+    <nav class="navbar scrolled">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">
+                <span class="logo-text">DP</span>
+            </a>
+            <a href="../index.html#proyectos" class="btn btn-outline">
+                <i class="fas fa-arrow-left"></i>
+                Volver a proyectos
+            </a>
+        </div>
+    </nav>
+    
+    <!-- Project Hero -->
+    <section class="project-hero">
+        <div class="container">
+            <div class="project-hero-content">
+                <a href="../index.html#proyectos" class="back-link">
+                    <i class="fas fa-arrow-left"></i>
+                    Todos los proyectos
+                </a>
+                
+                <h1 class="project-hero-title">E-Commerce Platform</h1>
+                
+                <p class="project-hero-description">
+                    Plataforma de comercio electrónico completa con carrito de compras, 
+                    pasarela de pagos integrada, panel de administración y sistema de 
+                    gestión de inventario en tiempo real.
+                </p>
+                
+                <div class="project-meta">
+                    <div class="meta-item">
+                        <span class="meta-label">Rol</span>
+                        <span class="meta-value">Full Stack Developer</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Duración</span>
+                        <span class="meta-value">4 meses</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Año</span>
+                        <span class="meta-value">2025</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Cliente</span>
+                        <span class="meta-value">TechRetail Co.</span>
+                    </div>
+                </div>
+                
+                <div class="project-links">
+                    <a href="https://demo-ecommerce.povi.dev" target="_blank" class="btn btn-primary">
+                        <i class="fas fa-external-link-alt"></i>
+                        Ver demo
+                    </a>
+                    <a href="https://github.com/davidpovi/ecommerce" target="_blank" class="btn btn-outline">
+                        <i class="fab fa-github"></i>
+                        Ver código
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Project Showcase -->
+    <section class="project-showcase">
+        <div class="container">
+            <div class="showcase-image">
+                <i class="fas fa-shopping-cart"></i>
+            </div>
+            
+            <div class="section-header">
+                <h2 class="section-title">Características principales</h2>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shopping-bag"></i>
+                    </div>
+                    <h3>Carrito inteligente</h3>
+                    <p>Sistema de carrito con persistencia, cálculo automático de impuestos y envío, y recomendaciones personalizadas.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <h3>Pagos seguros</h3>
+                    <p>Integración con Stripe y PayPal, soporte para múltiples monedas y métodos de pago locales.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>Panel de admin</h3>
+                    <p>Dashboard completo con métricas de ventas, gestión de productos, pedidos y clientes en tiempo real.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-boxes"></i>
+                    </div>
+                    <h3>Gestión de inventario</h3>
+                    <p>Control de stock automatizado, alertas de bajo inventario y sincronización multi-almacén.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Búsqueda avanzada</h3>
+                    <p>Motor de búsqueda con filtros dinámicos, autocompletado y búsqueda por voz.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Responsive design</h3>
+                    <p>Experiencia optimizada para móviles con PWA capabilities y notificaciones push.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Tech Stack -->
+    <section class="tech-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Stack tecnológico</h2>
+            </div>
+            
+            <div class="tech-grid">
+                <div class="tech-badge">
+                    <i class="fab fa-react" style="color: #61dafb;"></i>
+                    <span>React</span>
+                </div>
+                <div class="tech-badge">
+                    <i class="fab fa-node-js" style="color: #68a063;"></i>
+                    <span>Node.js</span>
+                </div>
+                <div class="tech-badge">
+                    <i class="fas fa-leaf" style="color: #47a248;"></i>
+                    <span>MongoDB</span>
+                </div>
+                <div class="tech-badge">
+                    <i class="fab fa-stripe" style="color: #635bff;"></i>
+                    <span>Stripe</span>
+                </div>
+                <div class="tech-badge">
+                    <i class="fab fa-aws" style="color: #ff9900;"></i>
+                    <span>AWS S3</span>
+                </div>
+                <div class="tech-badge">
+                    <i class="fab fa-docker" style="color: #2496ed;"></i>
+                    <span>Docker</span>
+                </div>
+                <div class="tech-badge">
+                    <i class="fas fa-bolt" style="color: #f7df1e;"></i>
+                    <span>Redux</span>
+                </div>
+                <div class="tech-badge">
+                    <i class="fas fa-wind" style="color: #06b6d4;"></i>
+                    <span>Tailwind CSS</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Challenges & Solutions -->
+    <section class="challenges-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Desafíos y soluciones</h2>
+            </div>
+            
+            <div class="challenge-item">
+                <div class="challenge-problem">
+                    <h3 class="challenge-title">Rendimiento con catálogo grande</h3>
+                    <h4>Problema</h4>
+                    <p>El cliente tenía más de 50,000 productos y la carga inicial era muy lenta, afectando la experiencia del usuario.</p>
+                </div>
+                <div class="challenge-solution">
+                    <h4>Solución</h4>
+                    <p>Implementé paginación infinita con virtualización, lazy loading de imágenes, y un sistema de caché con Redis que redujo los tiempos de carga en un 75%.</p>
+                </div>
+            </div>
+            
+            <div class="challenge-item">
+                <div class="challenge-problem">
+                    <h3 class="challenge-title">Sincronización de inventario</h3>
+                    <h4>Problema</h4>
+                    <p>Múltiples usuarios comprando el mismo producto causaban overselling y problemas de stock.</p>
+                </div>
+                <div class="challenge-solution">
+                    <h4>Solución</h4>
+                    <p>Desarrollé un sistema de reserva temporal con WebSockets para actualizar el stock en tiempo real y transacciones atómicas en la base de datos.</p>
+                </div>
+            </div>
+            
+            <div class="challenge-item">
+                <div class="challenge-problem">
+                    <h3 class="challenge-title">Integración de pagos</h3>
+                    <h4>Problema</h4>
+                    <p>El cliente necesitaba soportar múltiples métodos de pago y monedas para diferentes regiones.</p>
+                </div>
+                <div class="challenge-solution">
+                    <h4>Solución</h4>
+                    <p>Creé una capa de abstracción para proveedores de pago que permite agregar nuevos métodos fácilmente, con conversión de moneda automática y manejo robusto de errores.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-text">DP</span>
+                    <p>Creando experiencias digitales excepcionales.</p>
+                </div>
+                
+                <div class="footer-social">
+                    <a href="https://github.com/davidpovi" target="_blank" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/davidpovi" target="_blank" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://twitter.com/davidpovi" target="_blank" aria-label="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 David Povi. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

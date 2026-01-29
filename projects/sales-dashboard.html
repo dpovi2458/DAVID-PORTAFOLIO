@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Analytics Dashboard | David Povi</title>
+    <meta name="description" content="Dashboard de análisis de ventas con Power BI - Proyecto de David Povi">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../styles.css">
+    
+    <style>
+        .project-hero {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            padding: 140px 0 80px;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(16, 185, 129, 0.05));
+        }
+        
+        .project-hero-content { max-width: 800px; }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            transition: color 0.3s;
+        }
+        
+        .back-link:hover { color: var(--primary); }
+        
+        .project-hero-title {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 16px;
+        }
+        
+        .project-hero-description {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            line-height: 1.7;
+        }
+        
+        .project-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+            margin-bottom: 32px;
+        }
+        
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        
+        .meta-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .meta-value {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        
+        .project-links { display: flex; gap: 16px; }
+        
+        .project-showcase { padding: 80px 0; }
+        
+        .showcase-image {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-secondary));
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--text-muted);
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .showcase-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: 
+                linear-gradient(90deg, transparent 50%, rgba(99, 102, 241, 0.1) 50%),
+                linear-gradient(0deg, transparent 50%, rgba(16, 185, 129, 0.1) 50%);
+            background-size: 20px 20px;
+            opacity: 0.5;
+        }
+        
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+        
+        .kpi-card {
+            text-align: center;
+            padding: 32px 24px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            transition: all 0.3s;
+        }
+        
+        .kpi-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        .kpi-icon {
+            width: 56px;
+            height: 56px;
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--primary);
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: var(--radius-md);
+        }
+        
+        .kpi-value {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--secondary);
+            margin-bottom: 8px;
+        }
+        
+        .kpi-label {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+        
+        .feature-card {
+            padding: 32px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            transition: all 0.3s;
+        }
+        
+        .feature-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--primary);
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: var(--radius-md);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+        }
+        
+        .feature-card p {
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+        
+        .tech-section {
+            padding: 60px 0;
+            background: var(--bg-secondary);
+        }
+        
+        .tech-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: center;
+        }
+        
+        .tech-badge {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            font-weight: 500;
+        }
+        
+        .tech-badge i { font-size: 1.3rem; }
+        
+        .process-section { padding: 80px 0; }
+        
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 32px;
+        }
+        
+        .process-step {
+            position: relative;
+            padding: 32px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+        }
+        
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: 24px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: white;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+        }
+        
+        .process-step h3 {
+            font-size: 1.1rem;
+            margin: 16px 0 12px;
+        }
+        
+        .process-step p {
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+        
+        .insights-section {
+            padding: 80px 0;
+            background: var(--bg-secondary);
+        }
+        
+        .insight-item {
+            display: flex;
+            gap: 24px;
+            padding: 24px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            margin-bottom: 16px;
+        }
+        
+        .insight-icon {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--secondary);
+            background: rgba(16, 185, 129, 0.1);
+            border-radius: var(--radius-sm);
+        }
+        
+        .insight-content h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        
+        .insight-content p {
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-gradient" aria-hidden="true"></div>
+    <div class="bg-grid" aria-hidden="true"></div>
+    
+    <nav class="navbar scrolled">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">
+                <span class="logo-text">DP</span>
+            </a>
+            <a href="../index.html#proyectos" class="btn btn-outline">
+                <i class="fas fa-arrow-left"></i>
+                Volver a proyectos
+            </a>
+        </div>
+    </nav>
+    
+    <section class="project-hero">
+        <div class="container">
+            <div class="project-hero-content">
+                <a href="../index.html#proyectos" class="back-link">
+                    <i class="fas fa-arrow-left"></i>
+                    Todos los proyectos
+                </a>
+                
+                <h1 class="project-hero-title">Sales Analytics Dashboard</h1>
+                
+                <p class="project-hero-description">
+                    Dashboard ejecutivo de ventas con KPIs en tiempo real, análisis de 
+                    tendencias, segmentación de clientes y pronósticos. Diseñado para 
+                    facilitar la toma de decisiones estratégicas del equipo directivo.
+                </p>
+                
+                <div class="project-meta">
+                    <div class="meta-item">
+                        <span class="meta-label">Rol</span>
+                        <span class="meta-value">Data Analyst Lead</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Duración</span>
+                        <span class="meta-value">6 semanas</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Año</span>
+                        <span class="meta-value">2025</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Industria</span>
+                        <span class="meta-value">Retail / E-commerce</span>
+                    </div>
+                </div>
+                
+                <div class="project-links">
+                    <a href="https://app.powerbi.com/demo" target="_blank" class="btn btn-primary">
+                        <i class="fas fa-chart-bar"></i>
+                        Ver dashboard
+                    </a>
+                    <a href="https://github.com/davidpovi/sales-dashboard" target="_blank" class="btn btn-outline">
+                        <i class="fab fa-github"></i>
+                        Ver código
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="project-showcase">
+        <div class="container">
+            <div class="showcase-image">
+                <i class="fas fa-chart-line"></i>
+            </div>
+            
+            <!-- KPIs de impacto -->
+            <div class="section-header">
+                <h2 class="section-title">Impacto del proyecto</h2>
+            </div>
+            
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <div class="kpi-icon">
+                        <i class="fas fa-arrow-up"></i>
+                    </div>
+                    <div class="kpi-value">+25%</div>
+                    <div class="kpi-label">Incremento en ventas</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="kpi-value">-80%</div>
+                    <div class="kpi-label">Tiempo de reportes</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div class="kpi-value">2M+</div>
+                    <div class="kpi-label">Registros procesados</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="kpi-value">50+</div>
+                    <div class="kpi-label">Usuarios activos</div>
+                </div>
+            </div>
+            
+            <div class="section-header">
+                <h2 class="section-title">Características del dashboard</h2>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3>KPIs en tiempo real</h3>
+                    <p>Métricas clave actualizadas automáticamente: ventas, margen, ticket promedio, conversión y más.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-area"></i>
+                    </div>
+                    <h3>Análisis de tendencias</h3>
+                    <p>Visualización de patrones históricos, estacionalidad y comparativas YoY, MoM y WoW.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users-cog"></i>
+                    </div>
+                    <h3>Segmentación de clientes</h3>
+                    <p>Análisis RFM, cohortes de clientes y comportamiento de compra por segmento.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h3>Análisis geográfico</h3>
+                    <p>Mapas interactivos de ventas por región, sucursal y zona de entrega.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-boxes"></i>
+                    </div>
+                    <h3>Mix de productos</h3>
+                    <p>Análisis de categorías, productos top, análisis ABC y cross-selling opportunities.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <h3>Alertas automáticas</h3>
+                    <p>Notificaciones por email cuando los KPIs están fuera de rango o hay anomalías.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="tech-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Stack tecnológico</h2>
+            </div>
+            
+            <div class="tech-grid">
+                <div class="tech-badge">
+                    <i class="fas fa-chart-bar" style="color: #f2c811;"></i>
+                    <span>Power BI</span>
+                </div>
+                <div class="tech-badge">
+                    <i class="fas fa-database" style="color: #336791;"></i>
+                    <span>SQL Server</span>
+                </div>
+                <div class="tech-badge">
+                    <i class="fab fa-python" style="color: #3776ab;"></i>
+                    <span>Python</span>
+                </div>
+                <div class="tech-badge">
+                    <i class="fas fa-table" style="color: #217346;"></i>
+                    <span>DAX</span>
+                </div>
+                <div class="tech-badge">
+                    <i class="fas fa-cogs" style="color: #5c2d91;"></i>
+                    <span>Power Query</span>
+                </div>
+                <div class="tech-badge">
+                    <i class="fab fa-microsoft" style="color: #00a4ef;"></i>
+                    <span>Azure</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="process-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Proceso de desarrollo</h2>
+            </div>
+            
+            <div class="process-grid">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>Descubrimiento</h3>
+                    <p>Reuniones con stakeholders para entender KPIs críticos, preguntas de negocio y requisitos de visualización.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>Modelado de datos</h3>
+                    <p>Diseño del modelo dimensional (Star Schema), identificación de fuentes y definición de métricas.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>ETL Pipeline</h3>
+                    <p>Extracción, transformación y carga de datos usando Python y Power Query. Limpieza y validación.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3>Desarrollo DAX</h3>
+                    <p>Creación de medidas calculadas, time intelligence y KPIs complejos con fórmulas DAX optimizadas.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">5</div>
+                    <h3>Diseño UX</h3>
+                    <p>Creación de visualizaciones intuitivas, navegación clara y diseño responsive para diferentes dispositivos.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">6</div>
+                    <h3>Despliegue</h3>
+                    <p>Publicación en Power BI Service, configuración de refresh automático y permisos por rol.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="insights-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Insights descubiertos</h2>
+            </div>
+            
+            <div class="insight-item">
+                <div class="insight-icon">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <div class="insight-content">
+                    <h4>30% de ventas concentradas en solo 5 productos</h4>
+                    <p>El análisis Pareto reveló una alta dependencia de pocos SKUs, lo que llevó a estrategias de diversificación de portafolio.</p>
+                </div>
+            </div>
+            
+            <div class="insight-item">
+                <div class="insight-icon">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <div class="insight-content">
+                    <h4>Martes y miércoles son los días de mayor conversión</h4>
+                    <p>Este insight permitió optimizar las campañas de marketing digital, concentrando el presupuesto en los días más efectivos.</p>
+                </div>
+            </div>
+            
+            <div class="insight-item">
+                <div class="insight-icon">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <div class="insight-content">
+                    <h4>Clientes VIP representan el 65% del revenue</h4>
+                    <p>La segmentación RFM identificó que el 8% de clientes genera la mayoría del ingreso, priorizando programas de fidelización.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-text">DP</span>
+                    <p>Transformando datos en decisiones.</p>
+                </div>
+                
+                <div class="footer-social">
+                    <a href="https://github.com/davidpovi" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com/in/davidpovi" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://twitter.com/davidpovi" target="_blank"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 David Povi. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

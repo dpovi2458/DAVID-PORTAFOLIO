@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager Pro | David Povi</title>
+    <meta name="description" content="Aplicación de gestión de tareas con colaboración en tiempo real">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../styles.css">
+    
+    <style>
+        .project-hero {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            padding: 140px 0 80px;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(99, 102, 241, 0.05));
+        }
+        
+        .project-hero-content { max-width: 800px; }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            transition: color 0.3s;
+        }
+        
+        .back-link:hover { color: var(--primary); }
+        
+        .project-hero-title {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 16px;
+        }
+        
+        .project-hero-description {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            line-height: 1.7;
+        }
+        
+        .project-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+            margin-bottom: 32px;
+        }
+        
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        
+        .meta-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .meta-value {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        
+        .project-links { display: flex; gap: 16px; }
+        
+        .project-showcase { padding: 80px 0; }
+        
+        .showcase-image {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--text-muted);
+            margin-bottom: 60px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+        
+        .feature-card {
+            padding: 32px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            transition: all 0.3s;
+        }
+        
+        .feature-card:hover {
+            border-color: var(--secondary);
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--secondary);
+            background: rgba(16, 185, 129, 0.1);
+            border-radius: var(--radius-md);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+        }
+        
+        .feature-card p {
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+        
+        .tech-section {
+            padding: 60px 0;
+            background: var(--bg-secondary);
+        }
+        
+        .tech-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: center;
+        }
+        
+        .tech-badge {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            font-weight: 500;
+        }
+        
+        .tech-badge i { font-size: 1.3rem; }
+        
+        .results-section { padding: 80px 0; }
+        
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 32px;
+        }
+        
+        .result-card {
+            text-align: center;
+            padding: 40px 24px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+        }
+        
+        .result-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--secondary);
+            margin-bottom: 8px;
+        }
+        
+        .result-label {
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-gradient" aria-hidden="true"></div>
+    <div class="bg-grid" aria-hidden="true"></div>
+    
+    <nav class="navbar scrolled">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">
+                <span class="logo-text">DP</span>
+            </a>
+            <a href="../index.html#proyectos" class="btn btn-outline">
+                <i class="fas fa-arrow-left"></i>
+                Volver a proyectos
+            </a>
+        </div>
+    </nav>
+    
+    <section class="project-hero">
+        <div class="container">
+            <div class="project-hero-content">
+                <a href="../index.html#proyectos" class="back-link">
+                    <i class="fas fa-arrow-left"></i>
+                    Todos los proyectos
+                </a>
+                
+                <h1 class="project-hero-title">Task Manager Pro</h1>
+                
+                <p class="project-hero-description">
+                    Aplicación de gestión de tareas con colaboración en tiempo real, 
+                    tableros Kanban, notificaciones inteligentes y sincronización 
+                    perfecta entre dispositivos.
+                </p>
+                
+                <div class="project-meta">
+                    <div class="meta-item">
+                        <span class="meta-label">Rol</span>
+                        <span class="meta-value">Full Stack Developer</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Duración</span>
+                        <span class="meta-value">3 meses</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Año</span>
+                        <span class="meta-value">2024</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Tipo</span>
+                        <span class="meta-value">Proyecto personal</span>
+                    </div>
+                </div>
+                
+                <div class="project-links">
+                    <a href="https://taskmanager.povi.dev" target="_blank" class="btn btn-primary">
+                        <i class="fas fa-external-link-alt"></i>
+                        Ver demo
+                    </a>
+                    <a href="https://github.com/davidpovi/taskmanager" target="_blank" class="btn btn-outline">
+                        <i class="fab fa-github"></i>
+                        Ver código
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="project-showcase">
+        <div class="container">
+            <div class="showcase-image">
+                <i class="fas fa-tasks"></i>
+            </div>
+            
+            <div class="section-header">
+                <h2 class="section-title">Características principales</h2>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-columns"></i>
+                    </div>
+                    <h3>Tableros Kanban</h3>
+                    <p>Organiza tus tareas con tableros personalizables, drag & drop intuitivo y múltiples vistas.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Colaboración en tiempo real</h3>
+                    <p>Trabaja en equipo con actualizaciones instantáneas, comentarios y menciones.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <h3>Notificaciones inteligentes</h3>
+                    <p>Recordatorios personalizados, alertas de fechas límite y resúmenes diarios.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-sync"></i>
+                    </div>
+                    <h3>Sincronización perfecta</h3>
+                    <p>Accede desde cualquier dispositivo con sincronización instantánea y modo offline.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3>Analíticas y reportes</h3>
+                    <p>Visualiza tu productividad con gráficos, estadísticas y reportes exportables.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-plug"></i>
+                    </div>
+                    <h3>Integraciones</h3>
+                    <p>Conecta con Google Calendar, Slack, GitHub y más de 50 herramientas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="tech-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Stack tecnológico</h2>
+            </div>
+            
+            <div class="tech-grid">
+                <div class="tech-badge">
+                    <i class="fab fa-vuejs" style="color: #4fc08d;"></i>
+                    <span>Vue.js 3</span>
+                </div>
+                <div class="tech-badge">
+                    <i class="fas fa-fire" style="color: #ffca28;"></i>
+                    <span>Firebase</span>
+                </div>
+                <div class="tech-badge">
+                    <i class="fas fa-wind" style="color: #06b6d4;"></i>
+                    <span>Tailwind CSS</span>
+                </div>
+                <div class="tech-badge">
+                    <i class="fas fa-bolt" style="color: #646cff;"></i>
+                    <span>Vite</span>
+                </div>
+                <div class="tech-badge">
+                    <i class="fab fa-js" style="color: #f7df1e;"></i>
+                    <span>TypeScript</span>
+                </div>
+                <div class="tech-badge">
+                    <i class="fas fa-cogs" style="color: #ff6b6b;"></i>
+                    <span>Pinia</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="results-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Resultados</h2>
+            </div>
+            
+            <div class="results-grid">
+                <div class="result-card">
+                    <div class="result-number">5K+</div>
+                    <div class="result-label">Usuarios activos</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-number">50K+</div>
+                    <div class="result-label">Tareas completadas</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-number">4.8</div>
+                    <div class="result-label">Rating promedio</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-number">99.9%</div>
+                    <div class="result-label">Uptime</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-text">DP</span>
+                    <p>Creando experiencias digitales excepcionales.</p>
+                </div>
+                
+                <div class="footer-social">
+                    <a href="https://github.com/davidpovi" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com/in/davidpovi" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://twitter.com/davidpovi" target="_blank"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 David Povi. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
