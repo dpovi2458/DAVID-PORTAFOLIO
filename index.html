@@ -13,19 +13,19 @@
     
     <style>
         :root {
-            --primary: #00d4aa;
-            --primary-dark: #00a888;
-            --secondary: #7c3aed;
-            --accent: #f472b6;
-            --bg-dark: #0a0a0f;
-            --bg-card: #12121a;
-            --bg-card-hover: #1a1a25;
+            --primary: #00f5ff;
+            --primary-dark: #00c2cc;
+            --secondary: #ff4dff;
+            --accent: #ffd400;
+            --bg-dark: #07070f;
+            --bg-card: #141427;
+            --bg-card-hover: #1f1f38;
             --text: #ffffff;
-            --text-secondary: #a1a1aa;
-            --text-muted: #71717a;
-            --border: #27272a;
-            --gradient-1: linear-gradient(135deg, #00d4aa 0%, #7c3aed 100%);
-            --gradient-2: linear-gradient(135deg, #7c3aed 0%, #f472b6 100%);
+            --text-secondary: #c7c7d1;
+            --text-muted: #8a8aa0;
+            --border: #2e2e45;
+            --gradient-1: linear-gradient(135deg, #00f5ff 0%, #ff4dff 100%);
+            --gradient-2: linear-gradient(135deg, #ff4dff 0%, #ffd400 100%);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -464,6 +464,59 @@
             color: var(--text-secondary);
         }
 
+        /* Studies Section */
+        .studies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .study-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            transition: all 0.3s;
+        }
+
+        .study-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent);
+            box-shadow: 0 18px 50px rgba(255, 212, 0, 0.15);
+        }
+
+        .study-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 18px;
+            background: rgba(255, 212, 0, 0.15);
+            color: var(--accent);
+        }
+
+        .study-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .study-description {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 16px;
+        }
+
+        .study-list {
+            display: grid;
+            gap: 8px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
         /* Projects Section */
         .projects-section {
             background: linear-gradient(180deg, var(--bg-dark) 0%, var(--bg-card) 50%, var(--bg-dark) 100%);
@@ -749,6 +802,7 @@
             <ul class="nav-links">
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#skills">Habilidades</a></li>
+                <li><a href="#estudios">Estudios</a></li>
                 <li><a href="#proyectos">Proyectos</a></li>
                 <li><a href="#experiencia">Experiencia</a></li>
                 <li><a href="#contacto">Contacto</a></li>
@@ -799,7 +853,7 @@
             <div class="hero-visual">
                 <!-- Espacio para tu foto de perfil -->
                 <div class="profile-photo">
-                    <img src="assets/profile.jpg" alt="David Fredy Povis Qqueccaño" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <img src="assets/PERFIL.jpg" alt="David Fredy Povis Qqueccaño" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                     <div class="photo-placeholder">
                         <i class="fas fa-user"></i>
                         <span>Tu foto aquí</span>
@@ -857,6 +911,49 @@
                             <span class="line-number">11</span>
                             <span class="code-text"><span class="code-function">print</span>(<span class="code-string">"✅ Análisis completado"</span>)</span>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Studies Section -->
+    <section class="section" id="estudios">
+        <div class="section-container">
+            <div class="section-header">
+                <p class="section-label">Estudios científicos</p>
+                <h2 class="section-title">Enfoque científico en datos</h2>
+                <p class="section-subtitle">Razonamiento crítico, estadística y método científico aplicados al análisis de datos</p>
+            </div>
+            <div class="studies-grid">
+                <div class="study-card">
+                    <div class="study-icon"><i class="fas fa-microscope"></i></div>
+                    <h3 class="study-title">Método científico aplicado</h3>
+                    <p class="study-description">Formulación de hipótesis, validación y conclusiones basadas en evidencia.</p>
+                    <div class="study-list">
+                        <span>• Definición clara de objetivos</span>
+                        <span>• Diseño de experimentos</span>
+                        <span>• Evaluación de resultados</span>
+                    </div>
+                </div>
+                <div class="study-card">
+                    <div class="study-icon"><i class="fas fa-square-root-alt"></i></div>
+                    <h3 class="study-title">Estadística y probabilidad</h3>
+                    <p class="study-description">Interpretación rigurosa de datos con modelos estadísticos confiables.</p>
+                    <div class="study-list">
+                        <span>• Distribuciones y muestreo</span>
+                        <span>• Pruebas de hipótesis</span>
+                        <span>• Intervalos de confianza</span>
+                    </div>
+                </div>
+                <div class="study-card">
+                    <div class="study-icon"><i class="fas fa-atom"></i></div>
+                    <h3 class="study-title">Investigación aplicada</h3>
+                    <p class="study-description">Proyectos prácticos orientados a resultados y toma de decisiones.</p>
+                    <div class="study-list">
+                        <span>• Análisis exploratorio</span>
+                        <span>• Identificación de patrones</span>
+                        <span>• Recomendaciones accionables</span>
                     </div>
                 </div>
             </div>
