@@ -13,19 +13,19 @@
     
     <style>
         :root {
-            --primary: #00f5ff;
-            --primary-dark: #00c2cc;
-            --secondary: #ff4dff;
+            --primary: #00e5ff;
+            --primary-dark: #00bcd4;
+            --secondary: #ff3d7f;
             --accent: #ffd400;
             --bg-dark: #07070f;
             --bg-card: #141427;
             --bg-card-hover: #1f1f38;
             --text: #ffffff;
-            --text-secondary: #c7c7d1;
+            --text-secondary: #cfd3df;
             --text-muted: #8a8aa0;
             --border: #2e2e45;
-            --gradient-1: linear-gradient(135deg, #00f5ff 0%, #ff4dff 100%);
-            --gradient-2: linear-gradient(135deg, #ff4dff 0%, #ffd400 100%);
+            --gradient-1: linear-gradient(135deg, #00e5ff 0%, #ff3d7f 100%);
+            --gradient-2: linear-gradient(135deg, #ff3d7f 0%, #ffd400 100%);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -192,7 +192,41 @@
         .hero-subtitle {
             font-size: 1.5rem;
             color: var(--text-secondary);
+            margin-bottom: 12px;
+        }
+
+        .role-loader {
+            width: 320px;
+            max-width: 100%;
             margin-bottom: 24px;
+        }
+
+        .role-title {
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .role-bar {
+            height: 10px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 999px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .role-progress {
+            height: 100%;
+            width: 0;
+            background: var(--gradient-1);
+            border-radius: 999px;
+            animation: loadRole 2.2s ease forwards;
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.6);
+        }
+
+        @keyframes loadRole {
+            0% { width: 0; }
+            100% { width: 100%; }
         }
 
         .hero-description {
@@ -464,58 +498,6 @@
             color: var(--text-secondary);
         }
 
-        /* Studies Section */
-        .studies-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-        }
-
-        .study-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 28px;
-            transition: all 0.3s;
-        }
-
-        .study-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--accent);
-            box-shadow: 0 18px 50px rgba(255, 212, 0, 0.15);
-        }
-
-        .study-icon {
-            width: 56px;
-            height: 56px;
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.4rem;
-            margin-bottom: 18px;
-            background: rgba(255, 212, 0, 0.15);
-            color: var(--accent);
-        }
-
-        .study-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-
-        .study-description {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 16px;
-        }
-
-        .study-list {
-            display: grid;
-            gap: 8px;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
 
         /* Projects Section */
         .projects-section {
@@ -802,7 +784,6 @@
             <ul class="nav-links">
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#skills">Habilidades</a></li>
-                <li><a href="#estudios">Estudios</a></li>
                 <li><a href="#proyectos">Proyectos</a></li>
                 <li><a href="#experiencia">Experiencia</a></li>
                 <li><a href="#contacto">Contacto</a></li>
@@ -823,6 +804,12 @@
                     Hola, soy <span>David Fredy Povis Qqueccaño</span>
                 </h1>
                 <p class="hero-subtitle">Data Analyst Jr</p>
+                <div class="role-loader" aria-label="Carga de perfil">
+                    <div class="role-title">Data Analyst Jr</div>
+                    <div class="role-bar">
+                        <div class="role-progress"></div>
+                    </div>
+                </div>
                 <p class="hero-description">
                     Apasionado por transformar datos en insights accionables. En constante 
                     aprendizaje de análisis exploratorio, visualización de datos y Business Intelligence.
@@ -917,49 +904,6 @@
         </div>
     </section>
 
-    <!-- Studies Section -->
-    <section class="section" id="estudios">
-        <div class="section-container">
-            <div class="section-header">
-                <p class="section-label">Estudios científicos</p>
-                <h2 class="section-title">Enfoque científico en datos</h2>
-                <p class="section-subtitle">Razonamiento crítico, estadística y método científico aplicados al análisis de datos</p>
-            </div>
-            <div class="studies-grid">
-                <div class="study-card">
-                    <div class="study-icon"><i class="fas fa-microscope"></i></div>
-                    <h3 class="study-title">Método científico aplicado</h3>
-                    <p class="study-description">Formulación de hipótesis, validación y conclusiones basadas en evidencia.</p>
-                    <div class="study-list">
-                        <span>• Definición clara de objetivos</span>
-                        <span>• Diseño de experimentos</span>
-                        <span>• Evaluación de resultados</span>
-                    </div>
-                </div>
-                <div class="study-card">
-                    <div class="study-icon"><i class="fas fa-square-root-alt"></i></div>
-                    <h3 class="study-title">Estadística y probabilidad</h3>
-                    <p class="study-description">Interpretación rigurosa de datos con modelos estadísticos confiables.</p>
-                    <div class="study-list">
-                        <span>• Distribuciones y muestreo</span>
-                        <span>• Pruebas de hipótesis</span>
-                        <span>• Intervalos de confianza</span>
-                    </div>
-                </div>
-                <div class="study-card">
-                    <div class="study-icon"><i class="fas fa-atom"></i></div>
-                    <h3 class="study-title">Investigación aplicada</h3>
-                    <p class="study-description">Proyectos prácticos orientados a resultados y toma de decisiones.</p>
-                    <div class="study-list">
-                        <span>• Análisis exploratorio</span>
-                        <span>• Identificación de patrones</span>
-                        <span>• Recomendaciones accionables</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Skills Section -->
     <section class="section" id="skills">
         <div class="section-container">
@@ -969,17 +913,6 @@
                 <p class="section-subtitle">Herramientas y tecnologías que utilizo para transformar datos en decisiones</p>
             </div>
             <div class="skills-grid">
-                <div class="skill-card">
-                    <div class="skill-icon python"><i class="fab fa-python"></i></div>
-                    <h3 class="skill-title">Python</h3>
-                    <p class="skill-description">Análisis de datos, automatización y machine learning con las librerías más potentes.</p>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Pandas</span>
-                        <span class="skill-tag">NumPy</span>
-                        <span class="skill-tag">Scikit-learn</span>
-                        <span class="skill-tag">Matplotlib</span>
-                    </div>
-                </div>
                 <div class="skill-card">
                     <div class="skill-icon sql"><i class="fas fa-database"></i></div>
                     <h3 class="skill-title">SQL</h3>
@@ -1012,23 +945,13 @@
                     </div>
                 </div>
                 <div class="skill-card">
-                    <div class="skill-icon ml"><i class="fas fa-brain"></i></div>
-                    <h3 class="skill-title">Machine Learning</h3>
-                    <p class="skill-description">Modelos predictivos, clasificación y análisis de series temporales.</p>
+                    <div class="skill-icon powerbi"><i class="fas fa-chart-line"></i></div>
+                    <h3 class="skill-title">Visualización Power BI</h3>
+                    <p class="skill-description">Diseño de dashboards visualmente atractivos y claros para toma de decisiones.</p>
                     <div class="skill-tags">
-                        <span class="skill-tag">Regresión</span>
-                        <span class="skill-tag">Clasificación</span>
-                        <span class="skill-tag">Clustering</span>
-                    </div>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon viz"><i class="fas fa-chart-line"></i></div>
-                    <h3 class="skill-title">Visualización</h3>
-                    <p class="skill-description">Storytelling con datos y visualizaciones que comunican insights efectivamente.</p>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Tableau</span>
-                        <span class="skill-tag">Plotly</span>
-                        <span class="skill-tag">Seaborn</span>
+                        <span class="skill-tag">KPIs</span>
+                        <span class="skill-tag">Storytelling</span>
+                        <span class="skill-tag">UX de datos</span>
                     </div>
                 </div>
             </div>
@@ -1150,16 +1073,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <p class="footer-text">© 2026 David Fredy Povis Qqueccaño. Todos los derechos reservados.</p>
-        <div class="footer-socials">
-            <a href="https://github.com/dpovi2458" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/david-povis-qquecca%C3%B1o-2a855b221/" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="mailto:david.povis@unmsm.edu.pe"><i class="fas fa-envelope"></i></a>
-        </div>
-    </footer>
 
     <script>
         // Navbar scroll effect
