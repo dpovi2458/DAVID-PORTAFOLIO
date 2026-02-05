@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hunter | Buscador de empleos en LinkedIn</title>
+  <meta name="description" content="Hunter es una app web para construir y abrir busquedas de empleo en LinkedIn con un formulario rapido y guardado local.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="hunter.css">
+  <script src="hunter.js" defer></script>
+</head>
+<body>
+  <div class="ambient"></div>
+  <div class="grain"></div>
+
+  <header class="topbar">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">H</span>
+      Hunter
+    </a>
+    <nav class="top-links">
+      <a href="#como">Como funciona</a>
+      <a href="#guardadas">Busquedas guardadas</a>
+      <a class="cta" href="index.html">Volver al portafolio</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-copy">
+        <p class="eyebrow">Job Hunter Toolkit</p>
+        <h1>Busca empleos en LinkedIn con un solo formulario.</h1>
+        <p class="lead">
+          Define el rol, la ubicacion y los filtros clave. Hunter arma la busqueda y
+          la abre en LinkedIn sin usar APIs ni scraping.
+        </p>
+        <div class="signal-row">
+          <div class="signal">
+            <span class="signal-title">Rapido</span>
+            <span class="signal-text">Url lista en segundos</span>
+          </div>
+          <div class="signal">
+            <span class="signal-title">Seguro</span>
+            <span class="signal-text">No pedimos credenciales</span>
+          </div>
+          <div class="signal">
+            <span class="signal-title">Local</span>
+            <span class="signal-text">Guardado en tu navegador</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-grid">
+        <form class="card form-card" id="hunter-form">
+          <div class="card-header">
+            <h2>Formulario de busqueda</h2>
+            <p>Completa lo esencial y agrega etiquetas opcionales.</p>
+          </div>
+
+          <label class="field">
+            <span>Puesto o palabras clave</span>
+            <input type="text" name="role" placeholder="Ej: Data Analyst, Marketing, Frontend" autocomplete="off" required>
+          </label>
+
+          <label class="field">
+            <span>Ubicacion</span>
+            <input type="text" name="location" placeholder="Ej: Lima, Peru o Remoto" autocomplete="off">
+          </label>
+
+          <div class="field-grid">
+            <label class="field">
+              <span>Modalidad</span>
+              <select name="workplace">
+                <option value="">Selecciona</option>
+                <option value="Remoto">Remoto</option>
+                <option value="Hibrido">Hibrido</option>
+                <option value="Presencial">Presencial</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Nivel</span>
+              <select name="level">
+                <option value="">Selecciona</option>
+                <option value="Practicante">Practicante</option>
+                <option value="Junior">Junior</option>
+                <option value="Semi Senior">Semi Senior</option>
+                <option value="Senior">Senior</option>
+                <option value="Lead">Lead</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="field-grid">
+            <label class="field">
+              <span>Tipo de empleo</span>
+              <select name="jobtype">
+                <option value="">Selecciona</option>
+                <option value="Tiempo completo">Tiempo completo</option>
+                <option value="Medio tiempo">Medio tiempo</option>
+                <option value="Contrato">Contrato</option>
+                <option value="Temporal">Temporal</option>
+                <option value="Practicante">Practicante</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Palabras extra</span>
+              <input type="text" name="extras" placeholder="Ej: SQL, Power BI, Ingles">
+            </label>
+          </div>
+
+          <label class="field">
+            <span>Empresa preferida (opcional)</span>
+            <input type="text" name="company" placeholder="Ej: Rappi, Globant">
+          </label>
+
+          <div class="form-actions">
+            <button type="submit" class="primary">Buscar en LinkedIn</button>
+            <button type="button" class="ghost" id="save-search">Guardar busqueda</button>
+          </div>
+          <p class="note">Los filtros se agregan como palabras clave para mantener compatibilidad con LinkedIn.</p>
+        </form>
+
+        <aside class="card preview-card">
+          <div class="card-header">
+            <h2>Vista previa</h2>
+            <p>Verifica la URL antes de abrirla.</p>
+          </div>
+          <div class="preview-box" id="preview-url">Completa el formulario para generar la busqueda.</div>
+          <div class="preview-actions">
+            <button class="ghost" id="copy-link" type="button">Copiar URL</button>
+            <button class="primary" id="open-link" type="button" disabled>Abrir LinkedIn</button>
+          </div>
+          <div class="status" id="status"></div>
+
+          <div class="divider"></div>
+
+          <div class="tips">
+            <h3>Consejos rapidos</h3>
+            <ul>
+              <li>Usa roles en ingles y español para mas resultados.</li>
+              <li>Agrega skills tecnicas especificas.</li>
+              <li>Si buscas remoto, escribe "remote" y "remoto".</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="flow" id="como">
+      <div class="flow-card">
+        <h3>1. Define tu objetivo</h3>
+        <p>Selecciona el rol, modalidad y nivel para enfocar la busqueda.</p>
+      </div>
+      <div class="flow-card">
+        <h3>2. Genera la URL</h3>
+        <p>Hunter crea un enlace directo a LinkedIn con tus palabras clave.</p>
+      </div>
+      <div class="flow-card">
+        <h3>3. Guarda y reutiliza</h3>
+        <p>Tu historial queda en tu navegador para volver cuando quieras.</p>
+      </div>
+    </section>
+
+    <section class="saved" id="guardadas">
+      <div class="saved-header">
+        <h2>Busquedas guardadas</h2>
+        <p>Accede rapido a tus consultas recientes.</p>
+      </div>
+      <div class="saved-list" id="saved-list"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Hunter no esta afiliado a LinkedIn. Solo construye enlaces de busqueda para abrirlos en tu navegador.</p>
+  </footer>
+</body>
+</html>

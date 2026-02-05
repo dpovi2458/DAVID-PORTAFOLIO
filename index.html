@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>David Fredy Povis Qqueccaño | Data Analyst</title>
-    <meta name="description" content="Portafolio de David Fredy Povis Qqueccaño - Practicante Data Analyst | BI | Ingeniería Industrial UNMSM">
+    <title>David Povis Qqueccaño | Practicante de Ingeniería Industrial</title>
+    <meta name="description" content="Portafolio de David Povis Qqueccaño - Practicante de Ingeniería Industrial UNMSM | Operaciones, mejora continua, calidad, logística y SST.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -384,6 +384,9 @@
         .skill-icon.sql { background: rgba(37, 99, 235, 0.2); color: var(--primary-light); }
         .skill-icon.powerbi { background: rgba(234, 88, 12, 0.2); color: var(--secondary); }
         .skill-icon.excel { background: rgba(22, 163, 74, 0.2); color: var(--accent); }
+        .skill-icon.operations { background: rgba(14, 116, 144, 0.2); color: #22d3ee; }
+        .skill-icon.sst { background: rgba(234, 179, 8, 0.2); color: #facc15; }
+        .skill-icon.tools { background: rgba(168, 85, 247, 0.2); color: #c084fc; }
 
         .skill-title {
             font-size: 1.15rem;
@@ -553,6 +556,31 @@
             transition: transform 0.3s;
         }
 
+        .project-image--icon {
+            cursor: default;
+            flex-direction: column;
+            gap: 12px;
+            text-align: center;
+        }
+
+        .project-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            background: rgba(37, 99, 235, 0.2);
+            color: var(--primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+        }
+
+        .project-image-label {
+            color: var(--text-secondary);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
         .project-card:hover .project-image img {
             transform: scale(1.05);
         }
@@ -710,6 +738,7 @@
                 <li><a href="#habilidades">Habilidades</a></li>
                 <li><a href="#experiencia">Experiencia</a></li>
                 <li><a href="#proyectos">Proyectos</a></li>
+                <li><a href="hunter.html">Hunter App</a></li>
                 <li><a href="#contacto">Contacto</a></li>
             </ul>
             <a href="#contacto" class="nav-cta">Contáctame</a>
@@ -724,16 +753,17 @@
                     <i class="fas fa-search"></i>
                     En búsqueda de prácticas
                 </div>
-                <h1 class="hero-title">Hola, soy David Fredy Povis Qqueccaño</h1>
+                <h1 class="hero-title">Hola, soy David Povis Qqueccaño</h1>
                 <p class="hero-role">
                     <span id="typing-text"></span><span class="typing-cursor"></span>
                 </p>
                 <p class="hero-subtitle">
                     <strong>Ingeniería Industrial</strong> • UNMSM • 8.º ciclo • Tercio Superior
                 </p>
-                <p class="hero-description">
-                    Estudiante enfocado en Data Analytics y mejora de procesos. Aplico análisis de datos 
-                    para respaldar decisiones basadas en evidencia y contribuir a la eficiencia operativa.
+                                <p class="hero-description">
+                    Estudiante de Ingeniería Industrial con formación en gestión de operaciones, mejora continua,
+                    control de calidad, logística y SST. Certificado en Power BI, SQL y Excel Avanzado.
+                    Experiencia práctica coordinando eventos con SUNAFIL y disponibilidad inmediata para prácticas.
                 </p>
                 <div class="hero-buttons">
                     <a href="#proyectos" class="btn btn-primary">
@@ -745,22 +775,22 @@
                 </div>
                 <div class="hero-stats">
                     <div class="stat-item">
-                        <div class="stat-number">1+</div>
-                        <div class="stat-label">Proyectos</div>
+                        <div class="stat-number">100+</div>
+                        <div class="stat-label">Asistentes SST</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number">8º</div>
-                        <div class="stat-label">Ciclo</div>
+                        <div class="stat-number">15%</div>
+                        <div class="stat-label">Reducción ciclo</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number">Top</div>
-                        <div class="stat-label">Tercio</div>
+                        <div class="stat-number">4</div>
+                        <div class="stat-label">Proyectos clave</div>
                     </div>
                 </div>
             </div>
             <div class="hero-visual">
                 <div class="profile-photo">
-                    <img src="assets/PERFIL.jpg" alt="David Fredy Povis Qqueccaño">
+                    <img src="assets/PERFIL.jpg" alt="David Povis Qqueccaño">
                 </div>
                 <div class="info-card">
                     <p class="info-card-title">Información</p>
@@ -770,30 +800,34 @@
                     </div>
                     <div class="info-item">
                         <i class="fas fa-map-marker-alt"></i>
-                        <span>Perú</span>
+                        <span>Lima, Perú</span>
                     </div>
                     <div class="info-item">
                         <i class="fas fa-language"></i>
-                        <span>Español (Nativo) • Inglés (Básico)</span>
+                        <span>Español (Nativo) • Inglés (en formación)</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-bolt"></i>
+                        <span>Disponibilidad inmediata</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Skills Section -->
+        <!-- Skills Section -->
     <section class="section section-alt" id="habilidades">
         <div class="section-container">
             <div class="section-header">
                 <p class="section-label">Habilidades Técnicas</p>
-                <h2 class="section-title">Stack de Herramientas</h2>
-                <p class="section-subtitle">Tecnologías que domino para análisis de datos y Business Intelligence</p>
+                <h2 class="section-title">Herramientas y Metodologías</h2>
+                <p class="section-subtitle">Stack para operaciones, mejora continua, análisis de datos y SST.</p>
             </div>
             <div class="skills-grid">
                 <div class="skill-card">
-                    <div class="skill-icon powerbi"><i class="fas fa-chart-pie"></i></div>
+                    <div class="skill-icon powerbi"><i class="fas fa-chart-line"></i></div>
                     <h3 class="skill-title">Power BI</h3>
-                    <p class="skill-description">Dashboards interactivos, visualizaciones y seguimiento de KPIs para toma de decisiones.</p>
+                    <p class="skill-description">Dashboards de KPIs, OEE y productividad con actualización automática.</p>
                     <div class="skill-tags">
                         <span class="skill-tag">Dashboards</span>
                         <span class="skill-tag">DAX</span>
@@ -802,64 +836,95 @@
                 </div>
                 <div class="skill-card">
                     <div class="skill-icon excel"><i class="fas fa-file-excel"></i></div>
-                    <h3 class="skill-title">Microsoft Excel</h3>
-                    <p class="skill-description">Tablas dinámicas, funciones avanzadas y análisis de datos para reportes ejecutivos.</p>
+                    <h3 class="skill-title">Excel Avanzado</h3>
+                    <p class="skill-description">Modelos con macros/VBA, análisis de rotación y reportes ejecutivos.</p>
                     <div class="skill-tags">
-                        <span class="skill-tag">Tablas Dinámicas</span>
-                        <span class="skill-tag">Funciones</span>
-                        <span class="skill-tag">Análisis</span>
+                        <span class="skill-tag">Macros/VBA</span>
+                        <span class="skill-tag">Tablas dinámicas</span>
+                        <span class="skill-tag">Modelos ABC</span>
                     </div>
                 </div>
                 <div class="skill-card">
                     <div class="skill-icon sql"><i class="fas fa-database"></i></div>
-                    <h3 class="skill-title">SQL</h3>
-                    <p class="skill-description">Consultas y análisis de datos en bases de datos relacionales. Certificado por DataCamp.</p>
+                    <h3 class="skill-title">SQL & Datos</h3>
+                    <p class="skill-description">Consultas, análisis y limpieza de datos para apoyar decisiones.</p>
                     <div class="skill-tags">
                         <span class="skill-tag">Consultas</span>
                         <span class="skill-tag">Análisis</span>
                         <span class="skill-tag">DataCamp</span>
                     </div>
                 </div>
+                <div class="skill-card">
+                    <div class="skill-icon operations"><i class="fas fa-industry"></i></div>
+                    <h3 class="skill-title">Mejora Continua</h3>
+                    <p class="skill-description">Aplicación de Lean, Six Sigma, 5S y balanceo de líneas.</p>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Lean</span>
+                        <span class="skill-tag">DMAIC</span>
+                        <span class="skill-tag">Kaizen</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon sst"><i class="fas fa-shield-halved"></i></div>
+                    <h3 class="skill-title">SST & Calidad</h3>
+                    <p class="skill-description">IPER, control de calidad y normativa peruana (Ley 29783).</p>
+                    <div class="skill-tags">
+                        <span class="skill-tag">IPER</span>
+                        <span class="skill-tag">Ley 29783</span>
+                        <span class="skill-tag">Calidad</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon tools"><i class="fas fa-diagram-project"></i></div>
+                    <h3 class="skill-title">Herramientas</h3>
+                    <p class="skill-description">SAP MM/PP, Minitab, SPSS, Bizagi y gestión de proyectos.</p>
+                    <div class="skill-tags">
+                        <span class="skill-tag">SAP</span>
+                        <span class="skill-tag">Minitab</span>
+                        <span class="skill-tag">MS Project</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Experience Section -->
+        <!-- Experience Section -->
     <section class="section" id="experiencia">
         <div class="section-container">
             <div class="section-header">
                 <p class="section-label">Experiencia</p>
-                <h2 class="section-title">Trayectoria Profesional</h2>
+                <h2 class="section-title">Experiencia en Proyectos</h2>
             </div>
             <div class="experience-card" style="border-left: 4px solid var(--primary);">
-                <div class="exp-date">2024 - Actual</div>
+                <div class="exp-date">Proyecto SST</div>
                 <div class="exp-content">
-                    <h3 class="exp-title">Proyectos Personales en Data Analytics</h3>
-                    <p class="exp-company">Formación Autodidacta • Perú</p>
+                    <h3 class="exp-title">Asistente de Coordinación - Seguridad y Salud en el Trabajo</h3>
+                    <p class="exp-company">SUNAFIL - Superintendencia Nacional de Fiscalización Laboral</p>
                     <ul class="exp-list">
-                        <li>Desarrollo de dashboards interactivos en Power BI con datos reales</li>
-                        <li>Práctica constante en SQL para consultas y análisis de bases de datos</li>
-                        <li>Automatización de reportes y análisis con Excel avanzado</li>
-                        <li>Aprendizaje continuo mediante cursos y certificaciones (DataCamp, Cisco)</li>
+                        <li>Coordiné la logística y el registro de más de 100 asistentes en conferencia de SST.</li>
+                        <li>Apoyé la planificación y ejecución del evento “Aspectos básicos de Seguridad y Salud en el Trabajo”.</li>
+                        <li>Elaboré reportes de asistencia y evaluación de satisfacción post-evento.</li>
+                        <li>Fortalecí conocimientos en normativa SST peruana (Ley 29783).</li>
                     </ul>
                 </div>
             </div>
             <div class="experience-card">
-                <div class="exp-date">En búsqueda</div>
+                <div class="exp-date">Académico</div>
                 <div class="exp-content">
-                    <h3 class="exp-title">Primera Oportunidad Profesional</h3>
-                    <p class="exp-company">Abierto a prácticas pre-profesionales</p>
+                    <h3 class="exp-title">Proyectos de Mejora de Procesos</h3>
+                    <p class="exp-company">UNMSM - Ingeniería Industrial</p>
                     <ul class="exp-list">
-                        <li>Busco oportunidad para aplicar mis conocimientos en un entorno real</li>
-                        <li>Disponibilidad inmediata para prácticas en áreas de BI, Data Analytics o afines</li>
-                        <li>Motivación para aprender, crecer y aportar valor al equipo</li>
+                        <li>Optimización de línea de producción con estudio de tiempos y 5S (reducción del 15% en ciclo).</li>
+                        <li>Dashboard de KPIs operacionales con Power BI (OEE, productividad, calidad).</li>
+                        <li>Sistema de control de inventarios con análisis ABC y macros en Excel.</li>
+                        <li>Plan IPER y propuestas de control para mejora de condiciones SST.</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Education & Certifications -->
+        <!-- Education & Certifications -->
     <section class="section section-alt" id="educacion">
         <div class="section-container">
             <div class="section-header">
@@ -871,30 +936,45 @@
                     <div class="edu-icon"><i class="fas fa-graduation-cap"></i></div>
                     <h3 class="edu-title">Ingeniería Industrial</h3>
                     <p class="edu-institution">Universidad Nacional Mayor de San Marcos (UNMSM)</p>
-                    <p class="edu-details">8.º ciclo • Tercio Superior • Facultad de Ingeniería Industrial</p>
+                    <p class="edu-details">2021 - Presente • 8.º ciclo • Tercio Superior</p>
+                    <p class="edu-details">Cursos relevantes: Investigación de Operaciones, Gestión de Calidad Total, Ingeniería de Métodos, Planificación y Control de Producción, Logística y Cadena de Suministro.</p>
                 </div>
                 <div class="edu-card">
                     <div class="edu-icon"><i class="fas fa-language"></i></div>
-                    <h3 class="edu-title">Programa de Inglés - BASIC</h3>
+                    <h3 class="edu-title">Programa de Inglés</h3>
                     <p class="edu-institution">Asociación Cultural Peruano Británica</p>
-                    <p class="edu-details">Británico</p>
+                    <p class="edu-details">2024 - Presente • En formación</p>
                 </div>
             </div>
             <div style="margin-top: 40px;">
                 <h3 style="text-align: center; margin-bottom: 24px; color: var(--text-secondary);">Certificaciones</h3>
                 <div class="certs-grid">
                     <div class="cert-card">
+                        <div class="cert-icon"><i class="fas fa-chart-line"></i></div>
+                        <div class="cert-info">
+                            <p class="cert-title">Power BI - Data Analyst</p>
+                            <p class="cert-issuer">Microsoft • Jun 2025</p>
+                        </div>
+                    </div>
+                    <div class="cert-card">
                         <div class="cert-icon"><i class="fas fa-database"></i></div>
                         <div class="cert-info">
                             <p class="cert-title">SQL Associate</p>
-                            <p class="cert-issuer">DataCamp • Sep 2025 - Sep 2027</p>
+                            <p class="cert-issuer">DataCamp • Sep 2025</p>
+                        </div>
+                    </div>
+                    <div class="cert-card">
+                        <div class="cert-icon"><i class="fas fa-file-excel"></i></div>
+                        <div class="cert-info">
+                            <p class="cert-title">Excel Avanzado</p>
+                            <p class="cert-issuer">Interbank • Feb 2025</p>
                         </div>
                     </div>
                     <div class="cert-card">
                         <div class="cert-icon"><i class="fas fa-globe"></i></div>
                         <div class="cert-info">
                             <p class="cert-title">English for IT 1</p>
-                            <p class="cert-issuer">Cisco • Oct 2025 - Oct 2027</p>
+                            <p class="cert-issuer">Cisco • Oct 2025</p>
                         </div>
                     </div>
                 </div>
@@ -902,49 +982,99 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
+        <!-- Projects Section -->
     <section class="section" id="proyectos">
         <div class="section-container">
             <div class="section-header">
                 <p class="section-label">Portafolio</p>
                 <h2 class="section-title">Proyectos</h2>
-                <p class="section-subtitle">Proyectos de análisis de datos y Business Intelligence</p>
+                <p class="section-subtitle">Proyectos académicos aplicados a operaciones, calidad, SST y analítica.</p>
             </div>
             <div class="projects-grid">
                 <div class="project-card">
-                    <div class="project-image" onclick="openModal('appol datos/dashboard grafica.jpg')">
-                        <img src="appol datos/dashboard grafica.jpg" alt="Appol Data Dashboard">
+                    <div class="project-image project-image--icon">
+                        <div class="project-icon"><i class="fas fa-industry"></i></div>
+                        <div class="project-image-label">Optimización</div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="project-tag">Lean</span>
+                            <span class="project-tag">5S</span>
+                            <span class="project-tag">Tiempos</span>
+                        </div>
+                        <h3 class="project-title">Optimización de Línea de Producción</h3>
+                        <p class="project-description">Estudio de tiempos y movimientos con reducción del 15% en tiempos de ciclo.</p>
+                        <a href="#contacto" class="project-link">Solicitar detalle <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image project-image--icon">
+                        <div class="project-icon"><i class="fas fa-chart-pie"></i></div>
+                        <div class="project-image-label">KPIs Operacionales</div>
                     </div>
                     <div class="project-content">
                         <div class="project-tags">
                             <span class="project-tag">Power BI</span>
-                            <span class="project-tag">Excel</span>
+                            <span class="project-tag">OEE</span>
+                            <span class="project-tag">Productividad</span>
                         </div>
-                        <h3 class="project-title">Appol Data</h3>
-                        <p class="project-description">Dashboard de análisis de datos con visualizaciones interactivas y métricas clave de rendimiento.</p>
-                        <a href="https://github.com/dpovi2458/DASHBOARD-APPOL" target="_blank" class="project-link">
-                            Ver en GitHub <i class="fab fa-github"></i>
-                        </a>
+                        <h3 class="project-title">Dashboard de KPIs Operacionales</h3>
+                        <p class="project-description">Tablero en Power BI para monitorear OEE, calidad y eficiencia con actualización automática.</p>
+                        <a href="#contacto" class="project-link">Solicitar detalle <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
-                <!-- Espacio para más proyectos -->
+                <div class="project-card">
+                    <div class="project-image project-image--icon">
+                        <div class="project-icon"><i class="fas fa-shield-halved"></i></div>
+                        <div class="project-image-label">SST / IPER</div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="project-tag">Ley 29783</span>
+                            <span class="project-tag">IPER</span>
+                            <span class="project-tag">Seguridad</span>
+                        </div>
+                        <h3 class="project-title">Plan IPER y Mejora de Condiciones SST</h3>
+                        <p class="project-description">Identificación de peligros y evaluación de riesgos con propuestas de control.</p>
+                        <a href="#contacto" class="project-link">Solicitar detalle <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image project-image--icon">
+                        <div class="project-icon"><i class="fas fa-boxes-stacked"></i></div>
+                        <div class="project-image-label">Inventarios</div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="project-tag">ABC</span>
+                            <span class="project-tag">Excel VBA</span>
+                            <span class="project-tag">Rotación</span>
+                        </div>
+                        <h3 class="project-title">Sistema de Control de Inventarios</h3>
+                        <p class="project-description">Modelo ABC y análisis de rotación en Excel con macros para optimizar almacén.</p>
+                        <a href="#contacto" class="project-link">Solicitar detalle <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
+        <!-- Contact Section -->
     <section class="section section-alt contact-section" id="contacto">
         <div class="section-container">
             <div class="section-header">
                 <p class="section-label">Contacto</p>
                 <h2 class="section-title">¿Interesado en mi perfil?</h2>
-                <p class="section-subtitle">Estoy en búsqueda de oportunidades laborales como Data Analyst</p>
+                <p class="section-subtitle">Estoy en búsqueda de prácticas en producción, calidad, logística, SST o procesos.</p>
             </div>
             <div class="contact-buttons">
                 <a href="mailto:david.povis@unmsm.edu.pe" class="btn btn-primary">
                     <i class="fas fa-envelope"></i> david.povis@unmsm.edu.pe
                 </a>
-                <a href="https://www.linkedin.com/in/david-povis-qquecca%C3%B1o-2a855b221/" target="_blank" class="btn btn-outline">
+                <a href="tel:+51944507095" class="btn btn-outline">
+                    <i class="fas fa-phone"></i> +51 944 507 095
+                </a>
+                <a href="https://www.linkedin.com/in/dpovi" target="_blank" class="btn btn-outline">
                     <i class="fab fa-linkedin"></i> LinkedIn
                 </a>
                 <a href="https://github.com/dpovi2458" target="_blank" class="btn btn-outline">
@@ -962,7 +1092,7 @@
 
     <script>
         // Typing effect
-        const roles = ['Data Analyst Jr', 'Business Intelligence', 'Análisis de Datos'];
+        const roles = ['Practicante de Ingeniería Industrial', 'Mejora Continua y Procesos', 'Operaciones y Logística', 'SST y Calidad'];
         let roleIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
